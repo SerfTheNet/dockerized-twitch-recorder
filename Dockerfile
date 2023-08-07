@@ -1,4 +1,4 @@
-FROM 3.10.12-alpine3.18
+FROM python:3.10.12-alpine3.18
 
 RUN apk add --no-cache --virtual build-deps \
       gcc \
@@ -15,4 +15,4 @@ WORKDIR /app
 COPY twitch-stream-recorder/twitch-recorder.py .
 COPY config.py .
 
-RUN python3 /app/twitch-recorder.py -q $QUALITY
+CMD python3 /app/twitch-recorder.py -q ${QUALITY}

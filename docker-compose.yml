@@ -2,9 +2,23 @@ version: '3.9'
 
 services:
   recorder:
-    image: ghcr.io/jim60105/docker-twitch-recorder
-    restart: always
+    build: .
+    # restart: always
     env_file:
       - .env
     volumes:
-      - ${MOUNT_POINT}:/twitch-recorder
+      - ${MOUNT_POINT}:/cmd/twitch-recorder
+
+  filebrowser:
+    image: filebrowser/filebrowser
+    # restart: always
+    env_file:
+      - .env
+    volumes:
+      - ${MOUNT_POINT}:/cmd
+      - ./filebrowser.db:/database.db
+    ports: 
+      - "65434:80"
+    # user: "${UID}:${GID}"
+    
+# volumes:
