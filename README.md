@@ -1,5 +1,15 @@
-# Twitch Stream Recorder (Dockerize)
+# Twitch Stream Recorder (Dockerized)
 
-1. Rename `.env_sample` to `.env`
-1. Edit `.env`
-1. `docker-compose up -d`
+## Usage
+
+1. Edit config.py
+2. Edit .env file
+3. run `docker-compose up`
+
+## Contribution
+
+Based on [ancalentari/twitch-stream-recorder](https://github.com/ancalentari/twitch-stream-recorder)
+
+## TODO
+
+- change recorder image to build 

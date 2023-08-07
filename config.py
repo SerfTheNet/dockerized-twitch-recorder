@@ -1,5 +1,3 @@
-import os
-root_path = "/download"
-username = os.environ['username']
-client_id = os.environ['client_id']
-client_secret = os.environ['client_secret']
+username = "STREAMER_USERNAME_HERE"
+client_id = "YOUR_TWITCH_APP_CLIENT_ID"
+client_secret = "YOUR_TWITCH_APP_CLIENT_SERCET"

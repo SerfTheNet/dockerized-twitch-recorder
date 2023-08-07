@@ -1,6 +1,5 @@
-FROM python:alpine
+FROM 3.10.12-alpine3.18
 
-# RUN apk --update add --no-cache bash curl ffmpeg dumb-init gcc libc-dev
 RUN apk add --no-cache --virtual build-deps \
       gcc \
       libc-dev && \
@@ -16,8 +15,4 @@ WORKDIR /app
 COPY twitch-stream-recorder/twitch-recorder.py .
 COPY config.py .
 
-ENV username=
-ENV client_id=
-ENV client_secret=
-
-ENTRYPOINT [ "/usr/bin/dumb-init", "--", "python3", "-u", "/app/twitch-recorder.py" ]
+RUN python3 /app/twitch-recorder.py -q $QUALITY
