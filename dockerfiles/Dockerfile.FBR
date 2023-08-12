@@ -1,0 +1,10 @@
+FROM filebrowser/filebrowser:latest
+
+RUN ./filebrowser config init
+RUN ./filebrowser config set -r /twitch-recordings
+
+ARG FILEBROWSER_USERNAME $FILEBROWSER_USERNAME
+ARG FILEBROWSER_PASSWORD $FILEBROWSER_PASSWORD
+RUN ./filebrowser users add ${FILEBROWSER_USERNAME} ${FILEBROWSER_PASSWORD}
+
+ENTRYPOINT [ "/filebrowser" ]

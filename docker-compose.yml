@@ -2,23 +2,26 @@ version: '3.9'
 
 services:
   recorder:
-    build: .
+    build:
+      context: .
+      dockerfile: dockerfiles/Dockerfile.TSR
     # restart: always
     env_file:
       - .env
     volumes:
-      - ${MOUNT_POINT}:/cmd/twitch-recorder
+      - recordings:/twitch-recordings
 
   filebrowser:
-    image: filebrowser/filebrowser
+    build: 
+      context: .
+      dockerfile: dockerfiles/Dockerfile.FBR
+      args:
+        FILEBROWSER_USERNAME: $FILEBROWSER_USERNAME
+        FILEBROWSER_PASSWORD: $FILEBROWSER_PASSWORD
     # restart: always
-    env_file:
-      - .env
     volumes:
-      - ${MOUNT_POINT}:/cmd
-      - ./filebrowser.db:/database.db
+      - recordings:/twitch-recordings
     ports: 
       - "65434:80"
-    # user: "${UID}:${GID}"
-    
-# volumes:
+volumes:
+  recordings:

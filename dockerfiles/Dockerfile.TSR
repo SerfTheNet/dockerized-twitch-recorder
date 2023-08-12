@@ -13,6 +13,6 @@ RUN apk add --no-cache --virtual build-deps \
 
 WORKDIR /app
 COPY twitch-stream-recorder/twitch-recorder.py .
-COPY config.py .
+COPY configs/config.py .
 
 CMD python3 /app/twitch-recorder.py -q ${QUALITY}
